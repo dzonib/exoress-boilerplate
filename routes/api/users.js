@@ -6,13 +6,13 @@ const validateRegistration = require('../../validation/users/register');
 
 router.post('/register', async (req, res) => {
   const {email, name, password} = req.body;
-  const {errors, isValid} = await validateRegistration(req.body);
 
+  const {errors, isValid} = validateRegistration(req.body);
 
-  const user = await User.find({email});
+  const user = await User.findOne({email});
 
   if (user) {
-    errors.email = 'User already exists';
+    errors.email = 'User already registerd';
     return res.status(400).json(errors)
   }
 
