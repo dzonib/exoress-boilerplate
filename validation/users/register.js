@@ -2,6 +2,7 @@ const Validator = require('validator');
 const isEmpty = require("../isEmpty")
 
 module.exports = function validateRegistration(data) {
+  
   const errors = {};
 
   data.name = !isEmpty(data.name)
